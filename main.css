@@ -1,0 +1,22 @@
+.list{
+  list-style-type: none;
+  margin-left: -30px;
+}
+
+li{
+  padding-right: 100px;
+}
+
+#todo{
+  float: left;
+}
+
+#done{
+  margin-left: 250px;
+}
+
+
+.checkbox:checked + .my-label{
+  color: #808080;
+  text-decoration-line: line-through;
+}
