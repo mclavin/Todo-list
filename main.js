@@ -31,10 +31,10 @@ submit.type = "submit";
 submit.value = "Lägg till";
 submitStuff.appendChild(submit);
 
-var complete = document.createElement("input");
-complete.type = "submit";
-complete.value = "Flytta till done";
-submitStuff.appendChild(complete);
+//var complete = document.createElement("input");
+//complete.type = "submit";
+//complete.value = "Flytta till done";
+//submitStuff.appendChild(complete);
 
 //skapa header för todo
 var todoHeader = document.createElement("h2");
@@ -65,14 +65,22 @@ var add = function (){
   todoLi = document.createElement("li");
   todoList.appendChild(todoLi);
 
-  checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.setAttribute("class", "checkbox");
-  todoLi.appendChild(checkbox);
+  //checkbox = document.createElement("input");
+  //checkbox.type = "checkbox";
+  //checkbox.setAttribute("class", "checkbox");
+  //todoLi.appendChild(checkbox);
 
   var label = document.createElement("label");
   label.setAttribute("class", "my-label");
   todoLi.appendChild(label);
+
+  var doneButton = document.createElement("button");
+  doneButton.innerHTML = "Klar";
+  todoLi.appendChild(doneButton);
+
+  var deleteButton = document.createElement("button");
+  deleteButton.innerHTML = "DELETE";
+  todoLi.appendChild(deleteButton);
 
   var item = document.createTextNode(input.value);
   label.appendChild(item);
@@ -80,19 +88,25 @@ var add = function (){
 
 //funktion för att lägga till i done
 var move = function(){
-  var toMove = [];
-  //räkna antalet li
-  for (var i = 0; i < todoList.children.length; i++) {
-      var isChecked = todoList.children[i].innerHTML;
 
-      if (isChecked.checked){
-          toMove.push(todoList.children[i].innerHTML);
+  /*
+  //räkna antalet li
+
+  for (var i = 0; i < todoList.children.length; i++) {
+    var isChecked = todoList.children[i].getElementsByClassName("checkbox")[0].checked;
+      if (isChecked){
+        doneList.appendChild(todoList.children[i]);
+        todoList.removeChild(todoList.children[i])
       }
   }
+  */
 };
+
 
 //Event listener för att lägga till med klick
 submit.addEventListener("click", add);
 
 //Event listener för att flyta till done med klick
-complete.addEventListener("click", move);
+//complete.addEventListener("click", move);
+
+todoList.children[0].children[1].addEventListener("click", move);
